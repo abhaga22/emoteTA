@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TA EmoteCoin - The Classroom Memecoin</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            cursor: none;
+        }
+        .emote-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 0 20px #33ff33;
+        }
+        h1 {
+            color: #33ff33;
+            font-size: 4em;
+            text-shadow: 3px 3px #ff00ff;
+            animation: wobble 2s infinite, glitch 5s infinite;
+        }
+        @keyframes wobble {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+        @keyframes glitch {
+            0%, 100% { transform: none; }
+            92% { transform: skew(2deg); }
+            94% { transform: skew(-2deg); }
+            96% { transform: skew(2deg); }
+            98% { transform: skew(-2deg); }
+        }
+        .emote-image {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            animation: crazyAnim 10s infinite;
+        }
+        @keyframes crazyAnim {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(90deg) scale(1.2); }
+            50% { transform: rotate(180deg) scale(0.8); }
+            75% { transform: rotate(270deg) scale(1.1); }
+            100% { transform: rotate(360deg) scale(1); }
+        }
+        .cta-button {
+            background-color: #ff00ff;
+            color: #ffffff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: none;
+            transition: all 0.3s;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        .cta-button:hover {
+            background-color: #33ff33;
+            transform: rotate(5deg) scale(1.1);
+        }
+        .meme-text {
+            font-family: Impact, sans-serif;
+            font-size: 2em;
+            color: white;
+            text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000;
+            position: absolute;
+            display: none;
+        }
+        .easter-egg {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            cursor: none;
+        }
+        #custom-cursor {
+            position: fixed;
+            width: 30px;
+            height: 30px;
+            pointer-events: none;
+            z-index: 9999;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            margin: 20px 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .emote-gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .emote-gallery img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img src="alien1.webp" id="custom-cursor" alt="Custom Cursor">
+    <img src="alien2.webp" class="emote-background" alt="TA Emote Background">
+    <div class="container">
+        <h1>TA EmoteCoin</h1>
+        <img src="alien1.webp" alt="TA Emote Mascot" class="emote-image">
+        <h2>The Classroom Memecoin</h2>
+        <p>Join the educational revolution with TA EmoteCoin!</p>
+        <button class="cta-button" onclick="playSound()">Buy TA EmoteCoin Now</button>
+        
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/-QiN6DKF1AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        
+        <div class="emote-gallery">
+            <img src="alien2.webp" alt="TA Emote 2">
+            <img src="alien3.webp" alt="TA Emote 3">
+        </div>
+    </div>
+
+    <div id="memeText" class="meme-text"></div>
+    <img src="alien1.webp" class="easter-egg" style="top: 10%; left: 5%;" onclick="revealMessage(this)" alt="Easter Egg">
+    <img src="alien2.webp" class="easter-egg" style="bottom: 10%; right: 5%;" onclick="revealMessage(this)" alt="Easter Egg">
+
+    <script>
+        // Custom cursor
+        document.addEventListener('mousemove', (e) => {
+            const cursor = document.getElementById('custom-cursor');
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Interactive emotes
+        document.addEventListener('mousemove', createEmote);
+
+        function createEmote(e) {
+            const emote = document.createElement('img');
+            emote.src = 'alien1.webp';
+            emote.style.position = 'fixed';
+            emote.style.left = e.clientX + 'px';
+            emote.style.top = e.clientY + 'px';
+            emote.style.width = '30px';
+            emote.style.height = '30px';
+            emote.style.pointerEvents = 'none';
+            document.body.appendChild(emote);
+
+            setTimeout(() => {
+                emote.style.transition = 'all 1s';
+                emote.style.top = (Math.random() * window.innerHeight) + 'px';
+                emote.style.left = (Math.random() * window.innerWidth) + 'px';
+                emote.style.opacity = '0';
+            }, 100);
+
+            setTimeout(() => emote.remove(), 1100);
+        }
+
+        // Meme-style text
+        setInterval(() => {
+            const memeText = document.getElementById('memeText');
+            const phrases = ['HODL THE TA!', 'TO THE CLASSROOM!', 'GRADE A GAINS!'];
+            memeText.textContent = phrases[Math.floor(Math.random() * phrases.length)];
+            memeText.style.top = (Math.random() * (window.innerHeight - 100)) + 'px';
+            memeText.style.left = (Math.random() * (window.innerWidth - 200)) + 'px';
+            memeText.style.display = 'block';
+            setTimeout(() => memeText.style.display = 'none', 2000);
+        }, 5000);
+
+        // Easter eggs
+        function revealMessage(egg) {
+            alert('You found a hidden TA! A+ for you!');
+            egg.style.display = 'none';
+        }
+
+        // Sound effect
+        function playSound() {
+            const audio = new Audio('https://www.myinstants.com/media/sounds/ta-da.mp3');
+            audio.play();
+        }
+    </script>
+</body>
+</html>
