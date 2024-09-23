@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TA EmoteCoin - The Classroom Memecoin</title>
+    <title>$TA Coin - The Classroom Memecoin</title>
     <style>
         body {
             font-family: 'Comic Sans MS', cursive, sans-serif;
@@ -64,8 +64,8 @@
             100% { transform: rotate(360deg) scale(1); }
         }
         .cta-button {
-            background-color: #ff00ff;
-            color: #ffffff;
+            background-color: #33ff33;
+            color: #000000;
             border: none;
             padding: 15px 30px;
             font-size: 1.5em;
@@ -80,7 +80,7 @@
             100% { transform: scale(1); }
         }
         .cta-button:hover {
-            background-color: #33ff33;
+            background-color: #66ff66;
             transform: rotate(5deg) scale(1.1);
         }
         .meme-text {
@@ -134,21 +134,21 @@
 </head>
 <body>
     <img src="alien1.webp" id="custom-cursor" alt="Custom Cursor">
-    <img src="alien2.webp" class="emote-background" alt="TA Emote Background">
+    <img src="alien2.webp" class="emote-background" alt="$TA Background">
     <div class="container">
-        <h1>TA EmoteCoin</h1>
-        <img src="alien1.webp" alt="TA Emote Mascot" class="emote-image">
+        <h1>$TA Coin</h1>
+        <img src="alien1.webp" alt="$TA Mascot" class="emote-image">
         <h2>The Classroom Memecoin</h2>
-        <p>Join the educational revolution with TA EmoteCoin!</p>
-        <button class="cta-button" onclick="playSound()">Buy TA EmoteCoin Now</button>
+        <p>Join the educational revolution with $TA Coin!</p>
+        <button class="cta-button" onclick="playSound()">Buy $TA Coin Now</button>
         
         <div class="video-container">
             <iframe width="560" height="315" src="https://www.youtube.com/embed/-QiN6DKF1AI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         
         <div class="emote-gallery">
-            <img src="alien2.webp" alt="TA Emote 2">
-            <img src="alien3.webp" alt="TA Emote 3">
+            <img src="alien2.webp" alt="$TA Emote 2">
+            <img src="alien3.webp" alt="$TA Emote 3">
         </div>
     </div>
 
@@ -191,7 +191,7 @@
         // Meme-style text
         setInterval(() => {
             const memeText = document.getElementById('memeText');
-            const phrases = ['HODL THE TA!', 'TO THE CLASSROOM!', 'GRADE A GAINS!'];
+            const phrases = ['HODL THE $TA!', 'TO THE CLASSROOM!', 'GRADE A GAINS!'];
             memeText.textContent = phrases[Math.floor(Math.random() * phrases.length)];
             memeText.style.top = (Math.random() * (window.innerHeight - 100)) + 'px';
             memeText.style.left = (Math.random() * (window.innerWidth - 200)) + 'px';
@@ -201,7 +201,7 @@
 
         // Easter eggs
         function revealMessage(egg) {
-            alert('You found a hidden TA! A+ for you!');
+            alert('You found a hidden $TA! A+ for you!');
             egg.style.display = 'none';
         }
 
